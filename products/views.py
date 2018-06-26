@@ -10,5 +10,5 @@ def get_products(request):
 def cart_item_added(request):
     id = request.POST["product_id"]
     product = get_object_or_404(Product, pk=id)
-    return HttpResponse("Item added to cart :" + Product.name)
+    return HttpResponse("Item added to cart :" + product.name)
     

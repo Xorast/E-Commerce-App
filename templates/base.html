@@ -4,10 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
     <title>Document</title>
 </head>
 <body>
     
+    <html>
+<head>
+    <title>Stack - BootCamp Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- Fixed masthead -->
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -18,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src="#"></img></a>
+                <!--<a class="navbar-brand" href="#"><img src="#"></img></a>-->
                 </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -35,14 +49,35 @@
             </div>
         </div>
     </nav>
-    
-    <h1>THIS IS THE BASE</h1>
-    
-    {% block content %}
-    
-    
-    
-    {% endblock %}
-    
+
+    <div id="masthead">
+        <div class="container">
+            <div class="row">
+                <h1>
+                    <p id="logo" class="lead">This is the base</p>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-body">
+                        <!--blogpost entries-->
+                        {% block content %}
+                        {% endblock %}
+                        <!--blogpost entries-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <p>Made by Code Institute bootcampers</p>
+        </div>
+    </footer>
 </body>
 </html>
