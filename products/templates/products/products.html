@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    
     {% for item in products %}
         <div class="row">
             <div class="col-md-2 col-sm-3">
@@ -15,6 +16,13 @@
                         <p>{{ item.description|truncatewords:30 }}</p>
                         <p><span class="boldtext">Brand:</span>{{ item.brand }}</p>
                     </div>
+                    
+                    <form method="POST" action="{% url 'cart_item_added' %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ item.id }}"/>
+                        <input type="submit" value="ADD"/>
+                    </form>
+                    
                 </div>
             </div>
             <hr>

@@ -8,3 +8,4 @@ class Product(models.Model):
     price       = models.DecimalField(max_digits=6, decimal_places=2)
     image       = models.ImageField(upload_to='images')
     brand       = models.CharField(max_length=50, default='')
+    product_id  = models.CharField(max_length=3, default='')
