@@ -1,4 +1,4 @@
-from django.shortcuts   import render, get_object_or_404
+from django.shortcuts   import render, get_object_or_404, redirect
 from django.http        import HttpResponse
 from products.models    import Product
 # Here is the difference : Using forms.
@@ -6,10 +6,10 @@ from products.models    import Product
 
 
 def display_content(request):
-    cart        = request.session.get("cart", {})
+    cart          = request.session.get("cart", {})
     
     # Lists of the products in the cart
-    products    = []
+    products      = []
     overall_total = 0
 
     for key in cart:
@@ -18,7 +18,6 @@ def display_content(request):
                         "quantity"  : cart[key], 
                         "sub_total"     : item.price * cart[key]  }
         products.append(cart_item)
-        # overall_total += item.price * cart[key]
         overall_total += cart_item["sub_total"]
     
     return render(request, 'cart/cart-view.html', {"products" : products, "overall_total" : overall_total})
@@ -39,3 +38,16 @@ def cart_item_added(request):
     
     # Redirect somewhere
     return HttpResponse(cart[id])
+    
+def cart_item_removed(request):
+    
+    id          = request.POST.get("product_id")
+    cart        = request.session.get("cart", {})
+    cart.pop(id, None)
+    
+    # cart[id]    = 0
+   
+    request.session['cart'] = cart
+    
+    # Redirect somewhere
+    return redirect("/cart/view")
