@@ -9,3 +9,6 @@ class Product(models.Model):
     image       = models.ImageField(upload_to='images')
     brand       = models.CharField(max_length=50, default='')
     product_id  = models.CharField(max_length=3, default='')
+    
+    def __str__(self):
+        return self.name
