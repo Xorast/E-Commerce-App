@@ -1,26 +1,16 @@
 from django.shortcuts   import render, get_object_or_404, redirect
 from django.http        import HttpResponse
 from products.models    import Product
+from .utils             import get_cart_items_and_total
 # Here is the difference : Using forms.
 
 
 
 def display_content(request):
     cart          = request.session.get("cart", {})
+    context       = get_cart_items_and_total(cart)
     
-    # Lists of the products in the cart
-    products      = []
-    overall_total = 0
-
-    for key in cart:
-        item        = get_object_or_404(Product, pk=key)
-        cart_item   = { "product"   : item, 
-                        "quantity"  : cart[key], 
-                        "sub_total"     : item.price * cart[key]  }
-        products.append(cart_item)
-        overall_total += cart_item["sub_total"]
-    
-    return render(request, 'cart/cart-view.html', {"products" : products, "overall_total" : overall_total})
+    return render(request, 'cart/cart-view.html', context)
     
 def cart_item_added(request):
     

@@ -1,12 +1,22 @@
 {% extends 'base.html' %}
-
+{% load static from staticfiles %}
 {% load bootstrap_tags %}
 
+{% block head_js %}
+    {{ block.super }}
+    <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
+    <script type="text/javascript">
+      //<![CDATA[
+      Stripe.publishableKey = '{{ publishable }}';
+      //]]>
+    </script>
+    <script type="text/javascript" src="{% static 'checkout/stripe.js' %}"></script>
+{% endblock head_js %}
 
 
 {% block content %}
 
-
+     {% include 'cart/_show_cart.html' %}
 
     <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
         

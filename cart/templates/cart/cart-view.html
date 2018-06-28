@@ -7,21 +7,20 @@
         <div class="row">
             <div class="col-md-2 col-sm-3">
                 <a href="#">
-                    <img src="{{ MEDIA_URL }}{{ item.product.image }}" class="img-circle">
+                    <img src="{{ MEDIA_URL }}{{ item.image }}" class="img-circle">
                 </a>
             </div>
             <div class="col-md-10 col-sm-9">
-                <h3>{{ item.product.name }}</h3>
+                <h3>{{ item.name }}</h3>
                 <div class="row">
                     <div class="col-xs-9">
-                        <p>{{ item.product.description }}</p>
-                        <p><span class="boldtext">Brand:</span>{{ item.product.brand }}</p>
+                        <p><span class="boldtext">Brand:</span>{{ item.brand }}</p>
                         <p><span class="boldtext">Qty:</span>{{ item.quantity }}</p>
-                        <p><span class="boldtext">Subtotal:</span>{{ item.sub_total }}</p>
+                        <p><span class="boldtext">Subtotal:</span>{{ item.total }}</p>
                     </div>
                     <form method="POST" action="{% url 'cart_item_removed' %}">
                         {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ item.product.id }}"/>
+                        <input type="hidden" name="product_id" value="{{ item.product_id }}"/>
                         <input type="submit" value="REMOVE"/>
                     </form>
                 </div>

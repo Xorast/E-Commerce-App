@@ -95,3 +95,7 @@ USE_I18N        = True
 USE_L10N        = True
 
 USE_TZ          = True
+
+
+STRIPE_PUBLISHABLE_KEY  = os.environ.get("STRIPE_PUBLISHABLE_KEY")
+STRIPE_SECRET_KEY       = os.environ.get("STRIPE_SECRET_KEY")
