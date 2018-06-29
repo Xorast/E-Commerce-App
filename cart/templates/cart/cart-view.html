@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+     
+    {% if products|length > 0 %}
+  
     {% for item in products %}
         
         <div class="row">
@@ -43,4 +45,10 @@
     
     {{ overall_total }}
     
+    {% else %}
+    
+    <h1>CART</h1>
+    <p>Your cart is empty </p>
+    
+    {% endif %}
 {% endblock %}

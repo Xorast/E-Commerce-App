@@ -63,6 +63,15 @@
             <div class="col-md-12">
                 <div class="panel">
                     <div class="panel-body">
+                        {% if messages %}
+                            <div class="alert alert-success">
+                                <div class="messages">
+                                    {% for message in messages %}
+                                        {{ message }}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endif %}
                         <!--blogpost entries-->
                         {% block content %}
                         {% endblock %}
@@ -72,6 +81,8 @@
             </div>
         </div>
     </div>
+    
+    
     <footer>
         <div class="container">
             <p>Made by Code Institute bootcampers</p>

@@ -27,7 +27,8 @@ def cart_item_added(request):
     request.session['cart'] = cart
     
     # Redirect somewhere
-    return HttpResponse(cart[id])
+    return redirect("get_products")
+    
     
 def cart_item_removed(request):
     
